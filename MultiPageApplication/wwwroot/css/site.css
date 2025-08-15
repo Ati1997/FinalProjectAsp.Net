@@ -1,4 +1,4 @@
-﻿html {
+﻿/*html {
   font-size: 14px;
 }
 
@@ -11,23 +11,403 @@
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-body {
-  margin-bottom: 60px;
-}
-
 .form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+    color: var(--bs-secondary-color);
+    text-align: end;
 }
 
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+    text-align: start;
+}*/
+/*#region [-Reset-] */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*#endregion */
+
+/*#region [-Btn style-] */
+
+.btn,
+.btn:link,
+.btn:visited {
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    border-radius: 10rem;
+    transition: all 0.2s;
+    position: relative;
+    font-size: 1.6rem; /* جایگزین $defult-font-size */
+    font-family: sans-serif;
+    border: none;
+    cursor: pointer;
+}
+
+    .btn:hover,
+    .btn:focus {
+        outline: none;
+        transform: translateY(-3px);
+        box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.2);
+    }
+
+        .btn:hover::after,
+        .btn:focus::after {
+            transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0;
+        }
+
+    .btn:active {
+        transform: translateY(-1px);
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+    }
+
+/* دکمه سفید */
+.btn--white {
+    background-color: #fff; /* جایگزین $color-white */
+    color: #333; /* جایگزین $color-gray-dark */
+}
+
+    .btn--white::after {
+        background-color: #fff;
+    }
+
+/* دکمه سبز */
+.btn--green {
+    background-color: #FF5733; /* جایگزین $color-primary */
+    color: #fff;
+}
+
+    .btn--green::after {
+        background-color: #FF5733;
+    }
+
+/* افکت after */
+.btn::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.4s;
+}
+
+/* دکمه انیمیشنی */
+.btn-animated {
+    animation: moveInBottom 0.5s ease-out 0.75s;
+    animation-fill-mode: backwards;
+}
+
+/* btn-text */
+.btn-text:link,
+.btn-text:visited {
+    color: #FF5733; /* جایگزین $color-primary */
+    display: inline-block;
+    text-decoration: none;
+    border-bottom: 1px solid #FF5733;
+    padding: 3px;
+    font-size: 1.6rem;
+    transition: all 0.2s;
+}
+
+.btn-text:hover {
+    background-color: #FF5733;
+    color: #fff;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+.btn-text:active {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    transform: translateY(0);
+}
+
+/* انیمیشن moveInBottom */
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(3rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/*#endregion */
+
+
+/*#region [-Reset-] */
+
+* {
+    margin: 0;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+/*#endregion */
+
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: sans-serif;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1 0 auto; 
+    position: relative;
+
+}
+
+footer.footer {
+    background-color: #f8f9fa;
+    margin-top: auto; 
+    box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
+}
+
+
+
+/*#region [-Header-] */
+
+.header {
+    height: 95vh;
+    background-image: linear-gradient( to right bottom, rgba(255, 179, 71, 0.8), /* جایگزین $color-primary-light */
+    rgba(255, 87, 51, 0.8)),url(./images/11.jpg);
+    background-size: cover;
+    background-position: top;
+    position: relative;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%);
+}
+
+/* لوگو */
+.header__logo-box {
+    position: absolute;
+    top: 3rem;
+    left: 4rem;
+}
+
+.header__logo {
+    height: 6rem;
+}
+
+/* جعبه متن */
+.header__text-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+/*#endregion */
+
+
+/*typography*/
+
+/* هدر اصلی */
+.header-primary {
+    color: #ffffff; /* جایگزین $color-white */
+    margin-bottom: 8.5rem;
+    display: block;
+}
+
+/* هدر اصلی - متن اصلی */
+.header-primary--main {
+    display: block;
+    font-size: 5rem;
+    font-family: yekan, sans-serif;
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+}
+
+/* هدر اصلی - متن فرعی */
+.header-primary--sub {
+    display: block;
+    font-size: 2.7rem;
+    font-family: farhang, sans-serif;
+    animation: moveInRight 1s ease-out;
+    margin-top: 2rem;
+}
+
+/* heading-secondary */
+.heading-secondary {
+    font-size: 5rem;
+    display: inline-block;
+    background-image: linear-gradient(to right, #FFB347, #FF5733); /* جایگزین $color-primary-light و $color-primary-dark */
+    -webkit-background-clip: text;
+    color: transparent;
+    transition: all 0.2s;
+}
+
+    .heading-secondary:hover {
+        transform: skewY(2deg) skewX(15deg) scale(1.1);
+        text-shadow: 0.5rem 1rem 2rem rgba(0,0,0,0.2); /* جایگزین $color-black */
+    }
+
+/* heading-tertiary */
+.heading-tertiary {
+    font-size: 1.6rem; /* جایگزین $defult-font-size */
+    font-weight: 700;
+}
+
+/* پاراگراف */
+.paragraph {
+    font-size: 1.6rem; /* جایگزین $defult-font-size */
+    text-align: justify;
+}
+
+    .paragraph:not(:last-child) {
+        margin-bottom: 3rem;
+    }
+
+/* انیمیشن‌ها */
+@keyframes moveInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 /*CSS*/
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.u-center-text {
+    text-align: center;
+}
+
+.u-margin-bottom-big {
+    margin-bottom: 4rem;
+}
+
+.u-margin-bottom-small {
+    margin-bottom: 1.5rem;
+}
+
+.u-margin-bottom-2 {
+    margin-bottom: 2rem;
+}
+
+.heading-secondary {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #333;
+}
+
+.heading-tertiary {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #555;
+}
+
+.paragraph {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+.btn-text {
+    text-decoration: none;
+    color: #FF5733; /* جایگزین رنگ اصلی */
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+    .btn-text:hover {
+        transform: translateX(0.5rem);
+        color: #C70039;
+    }
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.col {
+    flex: 1;
+    min-width: 300px;
+}
+
+
+.composition {
+    position: relative;
+    height: 100%; /* یا ارتفاع دلخواه که main پر بشه */
+}
+
+/* عکس‌ها */
+.composition__photo {
+    width: 40%;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.4);
+    position: absolute;
+    border-radius: 2px;
+    z-index: 0;
+    transition: all 0.2s;
+    outline-offset: 2rem;
+}
+
+/* موقعیت هر عکس */
+.composition__photo--p1 {
+    left: 15%;
+    top: 5rem;
+}
+
+.composition__photo--p2 {
+    right: 0;
+    top: 6rem;
+}
+
+.composition__photo--p3 {
+    left: 35%;
+    top: 15rem;
+}
+
+/* هاور روی عکس */
+.composition__photo:hover {
+    outline: 1.5rem solid #FF5733; /* جایگزین $color-primary */
+    transform: scale(1.05) translateY(-0.5rem);
+    box-shadow: 0 2.5rem 4rem rgba(0, 0, 0, 0.5); /* جایگزین $color-black */
+    z-index: 20;
+}
+
+/* وقتی ماوس روی کل composition هست ولی عکس‌ها هاور نیستند */
+.composition:hover .composition__photo:not(:hover) {
+    transform: scale(0.95);
+}
+

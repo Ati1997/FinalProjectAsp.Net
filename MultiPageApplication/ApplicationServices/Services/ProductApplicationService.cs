@@ -1,8 +1,10 @@
 ﻿using Humanizer;
 using MultiPageApplication.ApplicationServices.Dtos.ProductDtos;
 using MultiPageApplication.ApplicationServices.Services.Contracts;
+using MultiPageApplication.Common.ResponseFrameworks;
 using MultiPageApplication.Models.DomainModels.ProductAggregates;
 using MultiPageApplication.Models.Services.Contracts;
+using System.Net;
 
 namespace MultiPageApplication.ApplicationServices.Services
 {
@@ -51,10 +53,29 @@ namespace MultiPageApplication.ApplicationServices.Services
                 ProductDescription = product.ProductDescription,
                 UnitPrice = product.UnitPrice
             };
-        } 
+        }
         #endregion
 
         #region [-GetAll-]
+
+        //public async Task<Response<List<GetAll_Product_Dto>>> GetAll()
+        //{
+        //    var products = await _productRepository.SelectAll();
+        //    if (products == null || !products.Any())
+        //    {
+        //        return Response<List<GetAll_Product_Dto>>.Fail("No products found", HttpStatusCode.NotFound);
+        //    }
+
+        //    var getAll_Product_Dto = products.Select(product => new GetAll_Product_Dto
+        //    {
+        //        Id = product.Id,
+        //        Title = product.Title,
+        //        ProductDescription = product.ProductDescription,
+        //        UnitPrice = product.UnitPrice
+        //    }).ToList();
+
+        //    return Response<List<GetAll_Product_Dto>>.Success(getAll_Product_Dto, HttpStatusCode.OK);
+        //}
         public async Task<List<GetAll_Product_Dto>> GetAll()
         {
             var products = await (_productRepository.SelectAll());
@@ -77,7 +98,7 @@ namespace MultiPageApplication.ApplicationServices.Services
             }
             return getAll_Product_Dto;
 
-        } 
+        }
         #endregion
 
         #region [-Post-]
@@ -121,7 +142,9 @@ namespace MultiPageApplication.ApplicationServices.Services
             product.UnitPrice = product_Dto.UnitPrice;
 
             await _productRepository.Update(product);
-        } 
+        }
+
+        
         #endregion
     }
 }

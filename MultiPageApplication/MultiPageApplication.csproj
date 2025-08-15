@@ -21,7 +21,7 @@
 
   <ItemGroup>
     <Folder Include="ApplicationServices\Dtos\CategoryDtos\" />
-    <Folder Include="Common\" />
+    <Folder Include="wwwroot\scss\" />
   </ItemGroup>
 
 </Project>

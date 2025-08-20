@@ -25,4 +25,8 @@
     <Folder Include="wwwroot\scss\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ResponseFramework\ResponseFramework.csproj" />
+  </ItemGroup>
+
 </Project>

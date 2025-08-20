@@ -1,4 +1,6 @@
-﻿@model IEnumerable<MultiPageApplication.ApplicationServices.Dtos.ProductDtos.GetAll_Product_Dto>
+﻿@* @model IEnumerable<MultiPageApplication.ApplicationServices.Dtos.ProductDtos.GetAll_Product_Dto> *@
+@model MultiPageApplication.ApplicationServices.Dtos.ProductDtos.GetAll_Product_Dto
+
 
 @{
     ViewData["Title"] = "لیست محصولات";
@@ -20,7 +22,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        @foreach (var item in Model.getById_Product_Dtos)
         {
             <tr>
                 <td>@item.Title</td>

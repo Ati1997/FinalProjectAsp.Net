@@ -2,14 +2,7 @@
 {
     public class GetAll_Product_Dto
     {
-        public Guid Id { get; set; }
-
-        public string Title { get; set; }
-        public string ProductDescription { get; set; }
-        //public int Price { get; set; }
-
-        public decimal UnitPrice { get; set; }
-
+        public List<GetById_Product_Dto> getById_Product_Dtos { get; set; }
 
     }
 }

@@ -1,14 +1,15 @@
 ﻿using MultiPageApplication.Models.DomainModels.ProductAggregates;
+using ResponseFramework;
 
 namespace MultiPageApplication.Models.Services.Contracts
 {
     public interface IProductRepository
     {
-        Task<List<Product>> SelectAll();
-        Task<Product> SelectById(Guid id);
-        Task Insert(Product product);
-        Task Update(Product product);
-        //Task Delete(Guid id);
-        Task Delete(Product product);
+        Task<IResponse<List<Product>>> SelectAll();
+        Task<IResponse<Product>> SelectById(Guid id);
+        Task<IResponse<Product>> Insert(Product product);
+        Task<IResponse<Product>> Update(Product product);
+        Task<IResponse<Product>> Delete(Product product);
+
     }
 }

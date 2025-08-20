@@ -5,6 +5,8 @@ VisualStudioVersion = 17.13.35828.75
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiPageApplication", "MultiPageApplication\MultiPageApplication.csproj", "{A9D0081D-93BF-4AC2-BE2C-7F27D44DE28D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResponseFramework", "ResponseFramework\ResponseFramework.csproj", "{15B5A823-DB2F-4329-B48E-9ADD6BCF520F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{A9D0081D-93BF-4AC2-BE2C-7F27D44DE28D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9D0081D-93BF-4AC2-BE2C-7F27D44DE28D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A9D0081D-93BF-4AC2-BE2C-7F27D44DE28D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15B5A823-DB2F-4329-B48E-9ADD6BCF520F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15B5A823-DB2F-4329-B48E-9ADD6BCF520F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15B5A823-DB2F-4329-B48E-9ADD6BCF520F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15B5A823-DB2F-4329-B48E-9ADD6BCF520F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MultiPageApplication.Models.DomainModels.ProductAggregates;
 using MultiPageApplication.Models.Services.Contracts;
+using ResponseFramework;
+using System.Net;
 
 namespace MultiPageApplication.Models.Services.Repositories
 {
@@ -12,110 +14,99 @@ namespace MultiPageApplication.Models.Services.Repositories
         public ProductRepository(MultiPageDbContext context)
         {
             _context = context;
-        } 
+        }
         #endregion
 
 
         #region [-Insert-]
-        public async Task Insert(Product product)
+        public async Task<IResponse<Product>> Insert(Product product)
         {
-            //todo:use response framework
-            if (product == null) { return; }
-           
-                try
-                {
-                    _context.Add(product);
-                    await _context.SaveChangesAsync();
+            if (product == null)
+                return new Response<Product>("Product cannot be null");
 
-                }
-                catch (Exception)
-                {
-
-                    throw;
-                }
-               
-            
+            try
+            {
+                _context.Add(product);
+                await _context.SaveChangesAsync();
+                return new Response<Product>(product, true, "Product inserted successfully", null, HttpStatusCode.Created);
+            }
+            catch (Exception ex)
+            {
+                return new Response<Product>(ex.Message);
+            }
         }
         #endregion
 
         #region [-Update-]
-        public async Task Update(Product product)
+        public async Task<IResponse<Product>> Update(Product product)
         {
-            if (product == null) throw new ArgumentNullException(nameof(product));
-            
-                try
-                {
-                    _context.Update(product);
-                    await _context.SaveChangesAsync();
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-                
+            if (product == null)
+                return new Response<Product>("Product cannot be null");
+
+            try
+            {
+                _context.Update(product);
+                await _context.SaveChangesAsync();
+                return new Response<Product>(product, true, "Product updated successfully", null, HttpStatusCode.OK);
+            }
+            catch (Exception ex)
+            {
+                return new Response<Product>(ex.Message);
+            }
         }
         #endregion
 
         #region [-Delete-]
-        public async Task Delete(Product product)
+        public async Task<IResponse<Product>> Delete(Product product)
         {
+            if (product == null)
+                return new Response<Product>("Product cannot be null");
 
-                try
-                {
-                    if (product != null)
-                    {
-                        _context.Attach(product); 
-                        _context.Remove(product);
-                        await _context.SaveChangesAsync();
-                    }
-                }
-                catch (Exception)
-                {
-
-                    throw;
-                }
-               
-            
+            try
+            {
+                _context.Attach(product);
+                _context.Remove(product);
+                await _context.SaveChangesAsync();
+                return new Response<Product>(product, true, "Product deleted successfully", null, HttpStatusCode.OK);
+            }
+            catch (Exception ex)
+            {
+                return new Response<Product>(ex.Message);
+            }
         }
         #endregion
 
         #region [-selectAll-]
-        public async Task<List<Product>> SelectAll()
+
+        public async Task<IResponse<List<Product>>> SelectAll()
         {
-                try
-                {
-                    var products = await _context.Product.ToListAsync();
-                    await _context.SaveChangesAsync();
-                    return products;
-
-                }
-                catch (Exception)
-                {
-
-                    throw;
-                }
-            
+            try
+            {
+                var products = await _context.Product.ToListAsync();
+                return new Response<List<Product>>(products);
+            }
+            catch (Exception ex)
+            {
+                return new Response<List<Product>>(ex.Message);
+            }
         }
         #endregion
 
         #region [-SelectById-]
-        public async Task<Product> SelectById(Guid id)
+        public async Task<IResponse<Product>> SelectById(Guid id)
         {
-            if (id == Guid.Empty) { return null; }
-            
-                try
-                {
-                    var product = await _context.Product.FindAsync(id);
-                    return product;
+            if (id == Guid.Empty)
+                return new Response<Product>("Invalid product ID");
 
-
-                }
-                catch (Exception ex)
-                {
-
-                    return null;
-                }
-
+            try
+            {
+                var product = await _context.Product.FindAsync(id);
+                return new Response<Product>(product);
+            }
+            catch (Exception ex)
+            {
+                return new Response<Product>(ex.Message);
+            }
         }
         #endregion
 

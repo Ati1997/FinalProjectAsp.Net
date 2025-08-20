@@ -1,16 +1,14 @@
 ﻿using MultiPageApplication.ApplicationServices.Dtos.ProductDtos;
-using MultiPageApplication.Common.ResponseFrameworks;
-
+using ResponseFramework;
 namespace MultiPageApplication.ApplicationServices.Services.Contracts
 {
     public interface IProductApplicationService
     {
-        Task<List<GetAll_Product_Dto>> GetAll();
-        //Task<Response<List<GetAll_Product_Dto>>> GetAll();
 
-        Task<GetById_Product_Dto> Get(Guid id);
-        Task Post(Post_Product_Dto product_Dto);
-        Task Put(Put_Product_Dto product_Dto);
-        Task Delete(Guid id);
+        Task<IResponse<GetAll_Product_Dto>> GetAll();
+        Task<IResponse<GetById_Product_Dto>> Get(Guid id);
+        Task<IResponse<GetById_Product_Dto>> Post(Post_Product_Dto product_Dto);
+        Task<IResponse<GetById_Product_Dto>> Put(Put_Product_Dto product_Dto);
+        Task<IResponse<bool>> Delete(Guid id);
     }
 }

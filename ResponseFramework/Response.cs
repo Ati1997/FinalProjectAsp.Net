@@ -1,9 +1,13 @@
-﻿using MultiPageApplication.ApplicationServices.Dtos.ProductDtos;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace MultiPageApplication.Common.ResponseFrameworks
+namespace ResponseFramework
 {
-    public class Response<TResult> : IResponse<TResult>
+    public class Response<TResult>:IResponse<TResult>
     {
         public Response(TResult result, bool isSuccessful, string? message, string? errorMessage, HttpStatusCode httStatusCode)
         {
@@ -13,7 +17,7 @@ namespace MultiPageApplication.Common.ResponseFrameworks
             ErrorMessage = errorMessage;
             HttpStatusCode = httStatusCode;
         }
-        public Response(TResult result)
+        public Response(TResult? result)
         {
             Result = result;
             if (result != null)
@@ -41,22 +45,11 @@ namespace MultiPageApplication.Common.ResponseFrameworks
             HttpStatusCode = HttpStatusCode.Ambiguous;
         }
 
-        //public static Response<TResult> Success(TResult result, HttpStatusCode httpStatusCode = HttpStatusCode.OK, string message = "Successful")
-        //{
-        //    return new Response<TResult>(result, true, message, string.Empty, httpStatusCode);
-        //}
-
-        //public static Response<TResult> Fail(string errorMessage, HttpStatusCode httpStatusCode = HttpStatusCode.BadRequest)
-        //{
-        //    return new Response<TResult>(default, false, string.Empty, errorMessage, httpStatusCode);
-        //}
-
         public bool IsSuccessful { get; set; }
         public string? Message { get; set; }
         public string? ErrorMessage { get; set; }
         public TResult? Result { get; set; }
         public HttpStatusCode HttpStatusCode { get; set; }
-
-      
     }
 }
+

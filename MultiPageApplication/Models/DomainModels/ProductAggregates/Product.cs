@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using static MultiPageApplication.Models.DomainModels.ProductAggregates.Category;
+using static MultiPageApplication.Models.DomainModels.CategoryAggregates.Category;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MultiPageApplication.Models.DomainModels.ProductAggregates

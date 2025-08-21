@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MultiPageApplication.Models.DomainModels.CategoryAggregates;
 using MultiPageApplication.Models.DomainModels.ProductAggregates;
 
 namespace MultiPageApplication.Models

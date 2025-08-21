@@ -55,7 +55,7 @@ namespace MultiPageApplication.ApplicationServices.Services
 
             var product = new Product
             {
-                Id = Guid.NewGuid(),
+                //Id = Guid.NewGuid(),
                 Title = product_Dto.Title,
                 ProductDescription = product_Dto.ProductDescription,
                 UnitPrice = product_Dto.UnitPrice

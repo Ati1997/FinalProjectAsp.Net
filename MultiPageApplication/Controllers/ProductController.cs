@@ -84,17 +84,17 @@ namespace MultiPageApplication.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Post_Product_Dto dto)
+        public async Task<IActionResult> Create(Post_Product_Dto post_Product_Dto)
         {
             if (!ModelState.IsValid)
-                return View(dto);
+                return View(post_Product_Dto);
 
-            var response = await _productApplicationService.Post(dto);
+            var response = await _productApplicationService.Post(post_Product_Dto);
 
             if (!response.IsSuccessful)
             {
                 ModelState.AddModelError(string.Empty, response.ErrorMessage);
-                return View(dto);
+                return View(post_Product_Dto);
             }
 
             return RedirectToAction(nameof(Index));
@@ -146,7 +146,7 @@ namespace MultiPageApplication.Controllers
 
             var product = response.Result;
 
-            var dto = new Put_Product_Dto
+            var put_Product_Dto = new Put_Product_Dto
             {
                 Id = product.Id,
                 Title = product.Title,
@@ -154,22 +154,22 @@ namespace MultiPageApplication.Controllers
                 UnitPrice = product.UnitPrice
             };
 
-            return View(dto);
+            return View(put_Product_Dto);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Put_Product_Dto dto)
+        public async Task<IActionResult> Edit(Put_Product_Dto put_Product_Dto)
         {
             if (!ModelState.IsValid)
-                return View(dto);
+                return View(put_Product_Dto);
 
-            var response = await _productApplicationService.Put(dto);
+            var response = await _productApplicationService.Put(put_Product_Dto);
 
             if (!response.IsSuccessful)
             {
                 ModelState.AddModelError(string.Empty, response.ErrorMessage);
-                return View(dto);
+                return View(put_Product_Dto);
             }
 
             return RedirectToAction(nameof(Index));
